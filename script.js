@@ -2,12 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const buttons = document.querySelector(".buttons");
     const display = document.getElementById("result");
 
-    var baseFontSize = 40; // Initial font size
-    var minFontSize = 20; // Minimum font size
-    var maxFontSize = 40; // Maximum font size
-    var fontSizeStep = 2; // Font size change step
-
     display.style.fontSize = "40px"
+    var baseFontSize = 40; // Initial font size
     
 
     buttons.addEventListener("click", function (e) {
@@ -42,19 +38,15 @@ document.addEventListener("DOMContentLoaded", function () {
     function adjustFontSize() {
         const containerWidth = display.clientWidth;
         const textWidth = getTextWidth(display.value, getComputedStyle(display).font);
-        console.log("distenc:", containerWidth-textWidth)
         var distance = containerWidth-textWidth
-        console.log("base font:", baseFontSize)
 
         if (distance < 25) {
-            console.log("kam ho gya")
             baseFontSize -= 2
             display.style.fontSize = `${baseFontSize}px`
-            }else if (distance > 25){
-                console.log("jyda")
-                baseFontSize = 40
-                display.style.fontSize = `${baseFontSize}px`
-            }
+        }else if (distance > 35){
+            baseFontSize = 40
+            display.style.fontSize = `${baseFontSize}px`
+        }
         }
             
     function getTextWidth(text, font) {
